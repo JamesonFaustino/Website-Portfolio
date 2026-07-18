@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<!--
+  EDIT ME FIRST — 2 things need your input before this is fully live:
+  1. "Juan_Dela_Cruz_Resume.docx" (search for it, appears twice) — this must be
+     the exact filename of your resume file, placed in the SAME FOLDER as this
+     HTML file when you upload/host it. Rename your resume file to match, or
+     change this filename to match your resume's actual name.
+  2. Google Drive Documents button (search for "driveLink", appears twice) —
+     replace href="#" with your actual Google Drive folder/file share link.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Dela Cruz — E-commerce Virtual Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F4F0;
+    --surface:#FFFFFF;
+    --ink:#1E2A28;
+    --ink-soft:#54615D;
+    --ink-faint:#8A9490;
+    --accent:#2B6157;
+    --accent-dark:#1F4A42;
+    --accent-soft:#E3ECE8;
+    --gold:#AD8A4E;
+    --line:#DEE2DC;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .serif{font-family:'Source Serif 4',serif;}
+
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#fff;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  .container{max-width:980px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(243,244,240,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    max-width:980px;margin:0 auto;padding:18px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{font-family:'Source Serif 4',serif;font-weight:700;font-size:18px;letter-spacing:0.01em;}
+  nav ul{list-style:none;display:flex;gap:32px;}
+  nav a{font-size:14px;font-weight:600;color:var(--ink-soft);transition:color .2s;}
+  nav a:hover{color:var(--accent);}
+  .nav-cta{
+    font-size:13px;font-weight:700;color:#fff;background:var(--accent);
+    padding:9px 18px;border-radius:3px;transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--accent-dark);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--ink);padding:7px 12px;font-size:13px;font-weight:600;cursor:pointer;border-radius:3px;}
+
+  /* dropdown */
+  .has-dropdown{position:relative;}
+  .dropdown{
+    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+    background:var(--surface);border:1px solid var(--line);border-radius:6px;
+    min-width:230px;padding:8px;box-shadow:0 10px 30px rgba(30,42,40,0.1);
+    opacity:0;visibility:hidden;transform:translateX(-50%) translateY(6px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index:60;
+  }
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown{
+    opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+  }
+  .dropdown a{
+    display:block;padding:9px 12px;font-size:13.5px;font-weight:500;
+    color:var(--ink-soft);border-radius:4px;text-transform:none;letter-spacing:0;
+  }
+  .dropdown a:hover{background:var(--accent-soft);color:var(--accent);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 72px;}
+  .hero-inner{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;}
+  .hero h1{
+    font-size:clamp(38px,5.4vw,58px);font-weight:700;line-height:1.08;
+    letter-spacing:-0.01em;margin-bottom:18px;
+  }
+  .hero h1 .accent{color:var(--accent);}
+  .hero-role{font-size:19px;font-weight:600;color:var(--ink-soft);margin-bottom:22px;}
+  .hero-desc{max-width:560px;color:var(--ink-soft);font-size:16.5px;margin-bottom:32px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
+  .btn{
+    font-size:14.5px;font-weight:700;padding:14px 26px;border-radius:3px;
+    display:inline-block;cursor:pointer;transition:all .2s ease;
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px);}
+  .btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-secondary:hover{background:var(--ink);color:#fff;}
+
+  .hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+  .stat{}
+  .stat-num{font-family:'Source Serif 4',serif;font-size:26px;font-weight:700;color:var(--accent);}
+  .stat-label{font-size:12.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
+
+  .hero-photo{
+    width:220px;height:220px;border-radius:50%;
+    background:linear-gradient(150deg,var(--accent-soft),var(--surface));
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Source Serif 4',serif;font-size:64px;font-weight:700;color:var(--accent);
+    flex-shrink:0;
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding:72px 0;}
+  .section-tag{
+    font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;
+  }
+  .section-title{
+    font-family:'Source Serif 4',serif;
+    font-size:clamp(26px,3.4vw,34px);font-weight:700;margin-bottom:14px;
+  }
+  .section-sub{color:var(--ink-soft);max-width:600px;font-size:16px;margin-bottom:44px;}
+
+  .divider{border:none;border-top:1px solid var(--line);}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:52px;}
+  .about-text p{color:var(--ink-soft);font-size:16px;margin-bottom:16px;}
+  .about-text strong{color:var(--ink);}
+  .facts{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px 24px;}
+  .fact-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;gap:12px;}
+  .fact-row:last-child{border-bottom:none;}
+  .fact-row .k{color:var(--ink-faint);}
+  .fact-row .v{font-weight:600;text-align:right;}
+
+  /* ---------- skills ---------- */
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .skill-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:6px;
+    padding:24px 26px;transition:border-color .2s, transform .2s;
+  }
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .skill-icon{
+    width:38px;height:38px;border-radius:6px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+    color:var(--accent);font-weight:700;font-size:15px;
+  }
+  .skill-title{font-weight:700;font-size:15.5px;margin-bottom:8px;}
+  .skill-desc{font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- projects ---------- */
+  .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .project-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:6px;
+    padding:26px 28px;transition:border-color .2s, transform .2s;
+  }
+  .project-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .project-num{
+    font-family:'Source Serif 4',serif;font-size:13px;font-weight:700;color:var(--gold);
+    letter-spacing:0.06em;margin-bottom:10px;
+  }
+  .project-title{font-family:'Source Serif 4',serif;font-weight:700;font-size:18px;margin-bottom:10px;}
+  .project-desc{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px;}
+  .project-tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .project-card{cursor:pointer;}
+  .project-visual{
+    height:120px;border-radius:6px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    overflow:hidden;position:relative;
+  }
+  .project-visual svg{width:100%;height:100%;}
+  .project-view{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13px;font-weight:700;color:var(--accent);margin-top:14px;
+  }
+  .project-card:hover .project-view{gap:9px;transition:gap .2s;}
+
+  /* modal */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(30,42,40,0.55);
+    display:none;align-items:center;justify-content:center;z-index:100;
+    padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:var(--surface);border-radius:10px;max-width:640px;width:100%;
+    max-height:85vh;overflow-y:auto;padding:36px;position:relative;
+  }
+  .modal-close{
+    position:absolute;top:18px;right:18px;width:34px;height:34px;
+    border-radius:50%;border:1px solid var(--line);background:var(--bg);
+    font-size:18px;cursor:pointer;color:var(--ink-soft);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .modal-close:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .modal-num{font-family:'JetBrains Mono','Source Serif 4',monospace;font-size:12px;font-weight:700;color:var(--gold);margin-bottom:10px;}
+  .modal-title{font-family:'Source Serif 4',serif;font-size:26px;font-weight:700;margin-bottom:16px;padding-right:30px;}
+  .modal-visual{height:160px;border-radius:8px;background:var(--accent-soft);margin-bottom:20px;overflow:hidden;}
+  .modal-visual svg{width:100%;height:100%;}
+  .modal-section-label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-faint);margin:18px 0 8px;}
+  .modal-body p{color:var(--ink-soft);font-size:15px;line-height:1.65;}
+  .modal-tools{display:flex;gap:8px;flex-wrap:wrap;}
+  .modal-tool{font-size:12.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:5px 12px;border-radius:4px;}
+  .modal-note{font-size:13px;color:var(--ink-faint);font-style:italic;margin-top:22px;padding-top:16px;border-top:1px solid var(--line);}
+  .project-tag{
+    font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+    padding:4px 10px;border-radius:3px;
+  }
+
+  /* ---------- experience timeline ---------- */
+  .timeline{position:relative;padding-left:28px;border-left:2px solid var(--line);}
+  .t-item{position:relative;padding-bottom:40px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";position:absolute;left:-34px;top:4px;
+    width:12px;height:12px;border-radius:50%;background:var(--accent);
+    border:3px solid var(--bg);
+  }
+  .t-date{font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;}
+  .t-role{font-family:'Source Serif 4',serif;font-size:20px;font-weight:700;margin-bottom:4px;}
+  .t-org{font-size:14.5px;color:var(--ink-soft);font-weight:600;margin-bottom:14px;}
+  .t-list{list-style:none;}
+  .t-list li{
+    font-size:15px;color:var(--ink-soft);padding-left:20px;position:relative;margin-bottom:8px;
+  }
+  .t-list li::before{content:"—";position:absolute;left:0;color:var(--ink-faint);}
+
+  /* ---------- training badges ---------- */
+  .badge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;}
+  .badge{
+    background:var(--surface);border:1px solid var(--line);border-radius:6px;
+    padding:18px 20px;display:flex;align-items:center;gap:14px;
+  }
+  .badge-mark{
+    width:40px;height:40px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;
+  }
+  .badge-title{font-size:14.5px;font-weight:700;margin-bottom:2px;}
+  .badge-org{font-size:12.5px;color:var(--ink-faint);}
+
+  /* ---------- contact ---------- */
+  .contact-band{background:var(--accent-dark);color:#fff;border-radius:10px;padding:56px 44px;text-align:center;}
+  .contact-band .section-title{color:#fff;}
+  .contact-band .section-sub{color:#CBDAD5;margin-left:auto;margin-right:auto;}
+  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+  .contact-links a{
+    background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);
+    padding:12px 22px;border-radius:4px;font-size:14.5px;font-weight:600;
+    transition:background .2s;
+  }
+  .contact-links a:hover{background:rgba(255,255,255,0.2);}
+
+  footer{
+    text-align:center;padding:32px 20px;font-size:13px;color:var(--ink-faint);
+  }
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:760px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-photo{order:-1;width:110px;height:110px;font-size:36px;}
+    .about-grid{grid-template-columns:1fr;}
+    .skill-grid{grid-template-columns:1fr;}
+    .project-grid{grid-template-columns:1fr;}
+    nav ul{
+      position:fixed;top:60px;left:0;right:0;background:var(--bg);
+      border-bottom:1px solid var(--line);flex-direction:column;padding:18px 24px;gap:16px;
+      transform:translateY(-120%);transition:transform .25s ease;
+    }
+    nav ul.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+    .nav-cta{display:none;}
+    .contact-band{padding:40px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="nav-wrap">
+    <div class="brand">Juan Dela Cruz</div>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">Menu</button>
+    <nav>
+      <ul id="navList">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="has-dropdown">
+          <a href="#projects">Projects &#9662;</a>
+          <div class="dropdown">
+            <a href="#project-amazon">Amazon Product Launch</a>
+            <a href="#project-shopify">Shopify Store Management</a>
+            <a href="#project-support">Customer Support</a>
+            <a href="#project-research">Product Research</a>
+            <a href="#project-listing">Listing Optimization</a>
+            <a href="#project-inventory">Inventory Management</a>
+          </div>
+        </li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="reveal">
+        <div class="eyebrow">Available for full-time work</div>
+        <h1>Keeping your online store <span class="accent">organized and running.</span></h1>
+        <p class="hero-role">E-commerce Virtual Assistant</p>
+        <p class="hero-desc">I help online sellers manage their Shopify and Amazon storefronts — product listings, inventory tracking, order support, and customer service documentation — handled with accuracy and care.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+          <a href="#projects" class="btn btn-secondary">View Projects</a>
+          <a href="Juan_Dela_Cruz_Resume.docx" download class="btn btn-secondary">&#8681; Resume</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">6</div>
+            <div class="stat-label">E-commerce Projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Full-Time Available</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">PH</div>
+            <div class="stat-label">Based, Flexible Hours</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo reveal">JDC</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-tag">About</div>
+        <h2 class="section-title">Practical e-commerce skills, backed by real admin discipline.</h2>
+        <div class="about-text">
+          <p>I'm currently an <strong>Administrative Assistant at the Department of Social Welfare and Development (DSWD)</strong>, where I handle document processing, records management, and data entry with a strong focus on accuracy and confidentiality.</p>
+          <p>Alongside that, I've built hands-on e-commerce experience through self-directed training — setting up Shopify stores, optimizing Amazon listings, and building the inventory and customer-support systems that keep an online store running smoothly. I'm looking to bring both skill sets to your store's day-to-day operations.</p>
+        </div>
+      </div>
+      <div class="facts reveal">
+        <div class="fact-row"><span class="k">Location</span><span class="v">Manila, Philippines</span></div>
+        <div class="fact-row"><span class="k">Availability</span><span class="v">Full-Time</span></div>
+        <div class="fact-row"><span class="k">Timezone</span><span class="v">Flexible</span></div>
+        <div class="fact-row"><span class="k">Platforms</span><span class="v">Shopify, Amazon</span></div>
+        <div class="fact-row"><span class="k">Core Tools</span><span class="v">Excel, Sheets, Canva</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="section-tag">What I Do</div>
+      <h3 class="section-title" style="font-size:24px;">Skills &amp; Tools</h3>
+      <p class="section-sub" style="margin-bottom:32px;">The e-commerce and admin support tasks I handle with accuracy and consistency.</p>
+      <div class="skill-grid">
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128722;</div>
+          <div class="skill-title">E-commerce Platforms</div>
+          <div class="skill-desc">Shopify and Amazon Seller Central.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128269;</div>
+          <div class="skill-title">Product Listing &amp; SEO</div>
+          <div class="skill-desc">Product research, keyword research, SEO titles &amp; descriptions, competitor analysis.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">#</div>
+          <div class="skill-title">Order &amp; Inventory Management</div>
+          <div class="skill-desc">Order processing, inventory tracking, returns &amp; refund handling.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">@</div>
+          <div class="skill-title">Customer Support</div>
+          <div class="skill-desc">Email support, customer communication, issue documentation, FAQ development.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">%</div>
+          <div class="skill-title">Data &amp; Reporting</div>
+          <div class="skill-desc">Microsoft Excel (formulas, pivot tables, charts), Google Sheets, data entry.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#128274;</div>
+          <div class="skill-title">Administrative Support</div>
+          <div class="skill-desc">Records management, document &amp; voucher processing, filing systems.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">&#9776;</div>
+          <div class="skill-title">Collaboration Tools</div>
+          <div class="skill-desc">Microsoft Word, Trello, Asana, Google Workspace, Slack, Canva.</div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">AI</div>
+          <div class="skill-title">AI Productivity Tools</div>
+          <div class="skill-desc">ChatGPT and Claude for faster, more accurate output.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-tag">Practice Work</div>
+    <h2 class="section-title">E-commerce Training Projects</h2>
+    <p class="section-sub">Self-directed projects completed to build applied e-commerce VA skills.</p>
+    <div class="project-grid">
+      <div class="project-card reveal" id="project-amazon" onclick="openProjectModal('amazon')">
+        <div class="project-visual"><svg viewBox="0 0 300 120"><rect width="300" height="120" fill="#E3ECE8"/><rect x="20" y="20" width="70" height="70" rx="4" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="100" y="26" width="140" height="10" rx="2" fill="#2B6157"/><rect x="100" y="44" width="100" height="7" rx="2" fill="#9BB5AE"/><rect x="100" y="58" width="120" height="7" rx="2" fill="#9BB5AE"/><rect x="100" y="76" width="60" height="16" rx="3" fill="#AD8A4E"/></svg></div>
+        <div class="project-num">01</div>
+        <div class="project-title">Amazon Product Launch &amp; Account Management</div>
+        <div class="project-desc">Researched products, competitors, and keywords to create SEO-optimized Amazon listings; built inventory trackers, sales dashboards, and performance reports in Excel.</div>
+        <div class="project-tags"><span class="project-tag">Amazon</span><span class="project-tag">Excel</span></div>
+        <div class="project-view">View Details &#8594;</div>
+      </div>
+      <div class="project-card reveal" id="project-shopify" onclick="openProjectModal('shopify')">
+        <div class="project-visual"><svg viewBox="0 0 300 120"><rect width="300" height="120" fill="#E3ECE8"/><rect x="20" y="20" width="60" height="45" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="90" y="20" width="60" height="45" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="160" y="20" width="60" height="45" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="20" y="75" width="200" height="8" rx="2" fill="#2B6157"/><rect x="20" y="90" width="140" height="6" rx="2" fill="#9BB5AE"/></svg></div>
+        <div class="project-num">02</div>
+        <div class="project-title">Shopify Store Management</div>
+        <div class="project-desc">Set up and managed a complete Shopify store, including product catalog, collections, navigation, and SEO-optimized listings.</div>
+        <div class="project-tags"><span class="project-tag">Shopify</span><span class="project-tag">SEO</span></div>
+        <div class="project-view">View Details &#8594;</div>
+      </div>
+      <div class="project-card reveal" id="project-support" onclick="openProjectModal('support')">
+        <div class="project-visual"><svg viewBox="0 0 300 120"><rect width="300" height="120" fill="#E3ECE8"/><rect x="24" y="18" width="252" height="20" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><rect x="24" y="44" width="252" height="20" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><rect x="24" y="70" width="252" height="20" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><circle cx="38" cy="28" r="4" fill="#AD8A4E"/><circle cx="38" cy="54" r="4" fill="#2B6157"/><circle cx="38" cy="80" r="4" fill="#AD8A4E"/></svg></div>
+        <div class="project-num">03</div>
+        <div class="project-title">E-commerce Customer Support Operations</div>
+        <div class="project-desc">Developed customer support SOPs, email response templates, and FAQ documentation; built a ticket tracking system and customer satisfaction dashboards.</div>
+        <div class="project-tags"><span class="project-tag">Support Docs</span></div>
+        <div class="project-view">View Details &#8594;</div>
+      </div>
+      <div class="project-card reveal" id="project-research" onclick="openProjectModal('research')">
+        <div class="project-visual"><svg viewBox="0 0 300 120"><rect width="300" height="120" fill="#E3ECE8"/><rect x="24" y="20" width="80" height="80" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><rect x="112" y="20" width="80" height="80" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><rect x="200" y="20" width="76" height="80" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><rect x="34" y="30" width="60" height="6" rx="2" fill="#2B6157"/><rect x="122" y="30" width="60" height="6" rx="2" fill="#2B6157"/><rect x="210" y="30" width="56" height="6" rx="2" fill="#2B6157"/></svg></div>
+        <div class="project-num">04</div>
+        <div class="project-title">Product Research &amp; Competitor Analysis</div>
+        <div class="project-desc">Compiled product and competitor data into comparison reports and dashboards to support data-driven listing decisions.</div>
+        <div class="project-tags"><span class="project-tag">Market Research</span></div>
+        <div class="project-view">View Details &#8594;</div>
+      </div>
+      <div class="project-card reveal" id="project-listing" onclick="openProjectModal('listing')">
+        <div class="project-visual"><svg viewBox="0 0 300 120"><rect width="300" height="120" fill="#E3ECE8"/><rect x="24" y="24" width="115" height="72" rx="3" fill="#fff" stroke="#C9BAB0" stroke-width="1.2"/><rect x="161" y="24" width="115" height="72" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="34" y="34" width="90" height="6" rx="2" fill="#C9BAB0"/><rect x="34" y="48" width="70" height="5" rx="2" fill="#DDD3C8"/><rect x="171" y="34" width="90" height="6" rx="2" fill="#2B6157"/><rect x="171" y="48" width="95" height="5" rx="2" fill="#9BB5AE"/><rect x="171" y="58" width="80" height="5" rx="2" fill="#9BB5AE"/></svg></div>
+        <div class="project-num">05</div>
+        <div class="project-title">Listing Optimization</div>
+        <div class="project-desc">Rewrote product listings with SEO-focused titles, bullet points, and descriptions; produced listing audit reports and optimization guides.</div>
+        <div class="project-tags"><span class="project-tag">Copywriting</span><span class="project-tag">SEO</span></div>
+        <div class="project-view">View Details &#8594;</div>
+      </div>
+      <div class="project-card reveal" id="project-inventory" onclick="openProjectModal('inventory')">
+        <div class="project-visual"><svg viewBox="0 0 300 120"><rect width="300" height="120" fill="#E3ECE8"/><rect x="24" y="20" width="252" height="80" rx="3" fill="#fff" stroke="#2B6157" stroke-width="1.2"/><line x1="24" y1="40" x2="276" y2="40" stroke="#C9BAB0" stroke-width="1"/><line x1="24" y1="60" x2="276" y2="60" stroke="#C9BAB0" stroke-width="1"/><line x1="24" y1="80" x2="276" y2="80" stroke="#C9BAB0" stroke-width="1"/><line x1="110" y1="20" x2="110" y2="100" stroke="#C9BAB0" stroke-width="1"/><line x1="196" y1="20" x2="196" y2="100" stroke="#C9BAB0" stroke-width="1"/><rect x="34" y="26" width="60" height="8" rx="2" fill="#2B6157"/></svg></div>
+        <div class="project-num">06</div>
+        <div class="project-title">Inventory &amp; Operations Management</div>
+        <div class="project-desc">Designed inventory trackers and order management spreadsheets in Excel, paired with SOPs for consistent inventory and order workflows.</div>
+        <div class="project-tags"><span class="project-tag">Inventory</span><span class="project-tag">SOPs</span></div>
+        <div class="project-view">View Details &#8594;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-tag">Experience</div>
+    <h2 class="section-title">Work History</h2>
+    <p class="section-sub">Real, current experience handling administrative operations.</p>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-date">October 2024 — Present</div>
+        <div class="t-role">Administrative Assistant</div>
+        <div class="t-org">Department of Social Welfare and Development (DSWD)</div>
+        <ul class="t-list">
+          <li>Prepared and maintained administrative documents, reports, and official correspondence with a high level of accuracy and attention to detail</li>
+          <li>Managed document filing systems, records, and spreadsheets, ensuring organized documentation and efficient information retrieval</li>
+          <li>Performed data entry, record management, and report preparation using Microsoft Excel and Word while maintaining data accuracy</li>
+          <li>Coordinated administrative tasks and supported daily office operations while maintaining the confidentiality of official records</li>
+        </ul>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">2019 — 2024</div>
+        <div class="t-role">Bachelor of Science in Computer Science</div>
+        <div class="t-org">University of the Philippines, Manila</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TRAINING -->
+<section id="training">
+  <div class="container">
+    <div class="section-tag">Continued Learning</div>
+    <h2 class="section-title">Training &amp; Professional Development</h2>
+    <p class="section-sub">Self-directed courses completed to strengthen digital and workplace skills.</p>
+    <div class="badge-grid">
+      <div class="badge reveal">
+        <div class="badge-mark">&#128722;</div>
+        <div><div class="badge-title">Amazon Seller University</div><div class="badge-org">Fundamentals · 2026</div></div>
+      </div>
+      <div class="badge reveal">
+        <div class="badge-mark">S</div>
+        <div><div class="badge-title">Shopify Academy</div><div class="badge-org">Fundamentals Training · 2026</div></div>
+      </div>
+      <div class="badge reveal">
+        <div class="badge-mark">AI</div>
+        <div><div class="badge-title">Microsoft AI Course</div><div class="badge-org">TESDA Online Program · 2026</div></div>
+      </div>
+      <div class="badge reveal">
+        <div class="badge-mark">&#128274;</div>
+        <div><div class="badge-title">Microsoft Cybersecurity Course</div><div class="badge-org">TESDA Online Program · 2026</div></div>
+      </div>
+      <div class="badge reveal">
+        <div class="badge-mark">DL</div>
+        <div><div class="badge-title">Microsoft Digital Literacy</div><div class="badge-org">TESDA Online Program · 2026</div></div>
+      </div>
+      <div class="badge reveal">
+        <div class="badge-mark">@</div>
+        <div><div class="badge-title">Workplace Communication</div><div class="badge-org">TESDA Online Program · 2026</div></div>
+      </div>
+      <div class="badge reveal">
+        <div class="badge-mark">&#128274;</div>
+        <div><div class="badge-title">Data Privacy in the Workplace</div><div class="badge-org">TESDA Online Program · 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-band reveal">
+      <div class="section-tag" style="color:#9FC4BA;">Get In Touch</div>
+      <h2 class="section-title">Let's get your store organized.</h2>
+      <p class="section-sub">Reach out and I'll respond within a day — I'm ready to start full-time.</p>
+      <div class="contact-links">
+        <a href="Juan_Dela_Cruz_Resume.docx" download>&#8681; Download Resume</a>
+        <a href="#projects">View Mock Projects</a>
+        <a href="#" target="_blank" rel="noopener" class="driveLink">Google Drive Documents</a>
+        <a href="https://linkedin.com/in/juandelacruz" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:juandelacruz@email.com">Email Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Juan Dela Cruz — Manila, Philippines</footer>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="if(event.target===this) closeProjectModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeProjectModal()" aria-label="Close">&times;</button>
+    <div class="modal-visual" id="modalVisual"></div>
+    <div class="modal-num" id="modalNum"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-body">
+      <div class="modal-section-label">What This Project Involved</div>
+      <p id="modalDesc"></p>
+      <div class="modal-section-label">Tools &amp; Skills Used</div>
+      <div class="modal-tools" id="modalTools"></div>
+      <div class="modal-note">Self-directed training project completed to build applied e-commerce VA skills. Visual shown is an illustrative mockup, not a live client store.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const projectData = {
+    amazon: {
+      num: '01', title: 'Amazon Product Launch & Account Management',
+      desc: 'Researched products, competitors, and keywords to create SEO-optimized Amazon listings. Built inventory trackers, sales dashboards, and performance reports in Excel to track how listings were performing and where stock levels stood.',
+      tools: ['Amazon Seller Central','Keyword Research','Excel','SEO Copywriting'],
+      visual: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="200" fill="#E3ECE8"/><rect x="40" y="35" width="140" height="130" rx="6" fill="#fff" stroke="#2B6157" stroke-width="2"/><rect x="200" y="45" width="280" height="18" rx="3" fill="#2B6157"/><rect x="200" y="75" width="220" height="10" rx="2" fill="#9BB5AE"/><rect x="200" y="92" width="240" height="10" rx="2" fill="#9BB5AE"/><rect x="200" y="120" width="110" height="28" rx="4" fill="#AD8A4E"/><rect x="200" y="158" width="90" height="10" rx="2" fill="#2B6157"/></svg>`
+    },
+    shopify: {
+      num: '02', title: 'Shopify Store Management',
+      desc: 'Set up and managed a complete Shopify store from the ground up — product catalog structure, collections, navigation menus, and SEO-optimized product listings, following e-commerce best practices for store organization.',
+      tools: ['Shopify','Store Setup','Collections & Navigation','SEO'],
+      visual: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="200" fill="#E3ECE8"/><rect x="40" y="35" width="150" height="80" rx="5" fill="#fff" stroke="#2B6157" stroke-width="2"/><rect x="210" y="35" width="150" height="80" rx="5" fill="#fff" stroke="#2B6157" stroke-width="2"/><rect x="380" y="35" width="150" height="80" rx="5" fill="#fff" stroke="#2B6157" stroke-width="2"/><rect x="40" y="130" width="240" height="16" rx="3" fill="#2B6157"/><rect x="40" y="155" width="180" height="10" rx="2" fill="#9BB5AE"/></svg>`
+    },
+    support: {
+      num: '03', title: 'E-commerce Customer Support Operations',
+      desc: 'Developed customer support SOPs, email response templates, and FAQ documentation. Built a ticket tracking system and customer satisfaction dashboards to help keep support responses consistent and organized.',
+      tools: ['Support SOPs','Email Templates','FAQ Docs','Ticket Tracking'],
+      visual: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="200" fill="#E3ECE8"/><rect x="50" y="30" width="500" height="34" rx="4" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="50" y="76" width="500" height="34" rx="4" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="50" y="122" width="500" height="34" rx="4" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><circle cx="75" cy="47" r="7" fill="#AD8A4E"/><circle cx="75" cy="93" r="7" fill="#2B6157"/><circle cx="75" cy="139" r="7" fill="#AD8A4E"/></svg>`
+    },
+    research: {
+      num: '04', title: 'Product Research & Competitor Analysis',
+      desc: 'Compiled product and competitor data into comparison reports and dashboards, laying out pricing, features, and positioning side by side to support data-driven listing and pricing decisions.',
+      tools: ['Market Research','Competitor Analysis','Reporting'],
+      visual: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="200" fill="#E3ECE8"/><rect x="40" y="35" width="160" height="130" rx="5" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="220" y="35" width="160" height="130" rx="5" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="400" y="35" width="160" height="130" rx="5" fill="#fff" stroke="#2B6157" stroke-width="1.5"/><rect x="55" y="50" width="120" height="10" rx="2" fill="#2B6157"/><rect x="235" y="50" width="120" height="10" rx="2" fill="#2B6157"/><rect x="415" y="50" width="120" height="10" rx="2" fill="#2B6157"/></svg>`
+    },
+    listing: {
+      num: '05', title: 'Listing Optimization',
+      desc: 'Rewrote product listings with SEO-focused titles, bullet points, and descriptions to improve clarity and keyword coverage. Produced listing audit reports and optimization guides documenting the before-and-after changes.',
+      tools: ['Copywriting','SEO','Listing Audits'],
+      visual: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="200" fill="#E3ECE8"/><rect x="40" y="35" width="230" height="130" rx="5" fill="#fff" stroke="#C9BAB0" stroke-width="1.5"/><rect x="330" y="35" width="230" height="130" rx="5" fill="#fff" stroke="#2B6157" stroke-width="2"/><rect x="60" y="55" width="180" height="10" rx="2" fill="#C9BAB0"/><rect x="60" y="75" width="140" height="8" rx="2" fill="#DDD3C8"/><rect x="350" y="55" width="180" height="10" rx="2" fill="#2B6157"/><rect x="350" y="75" width="190" height="8" rx="2" fill="#9BB5AE"/><rect x="350" y="90" width="160" height="8" rx="2" fill="#9BB5AE"/></svg>`
+    },
+    inventory: {
+      num: '06', title: 'Inventory & Operations Management',
+      desc: 'Designed inventory trackers and order management spreadsheets in Excel, paired with SOPs for consistent inventory and order workflows — covering stock levels, reorder points, and order status tracking.',
+      tools: ['Inventory Tracking','Excel','SOPs','Order Management'],
+      visual: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="200" fill="#E3ECE8"/><rect x="50" y="30" width="500" height="140" rx="5" fill="#fff" stroke="#2B6157" stroke-width="2"/><line x1="50" y1="65" x2="550" y2="65" stroke="#C9BAB0" stroke-width="1"/><line x1="50" y1="100" x2="550" y2="100" stroke="#C9BAB0" stroke-width="1"/><line x1="50" y1="135" x2="550" y2="135" stroke="#C9BAB0" stroke-width="1"/><line x1="220" y1="30" x2="220" y2="170" stroke="#C9BAB0" stroke-width="1"/><line x1="390" y1="30" x2="390" y2="170" stroke="#C9BAB0" stroke-width="1"/><rect x="65" y="42" width="120" height="12" rx="2" fill="#2B6157"/></svg>`
+    }
+  };
+
+  function openProjectModal(key){
+    const p = projectData[key];
+    document.getElementById('modalNum').textContent = 'Project ' + p.num;
+    document.getElementById('modalTitle').textContent = p.title;
+    document.getElementById('modalDesc').textContent = p.desc;
+    document.getElementById('modalVisual').innerHTML = p.visual;
+    document.getElementById('modalTools').innerHTML = p.tools.map(t => `<span class="modal-tool">${t}</span>`).join('');
+    document.getElementById('projectModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeProjectModal(){
+    document.getElementById('projectModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeProjectModal(); });
+
+  const navToggle = document.getElementById('navToggle');
+  const navList = document.getElementById('navList');
+  navToggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navList.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
